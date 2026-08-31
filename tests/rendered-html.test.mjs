@@ -25,7 +25,8 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /雷强博客/);
   assert.match(html, /全部视频/);
   assert.match(html, /粤ICP备2026121805号-1/);
-  assert.match(html, /正在读取视频/);
+  assert.match(html, /傍晚窗口期，水草边的一竿/);
+  assert.match(html, /\/posters\/1788083767245\.MOV\.jpg/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });
 
@@ -33,6 +34,9 @@ test("ships video data without starter preview files", async () => {
   const videos = JSON.parse(await readFile(new URL("../public/videos.json", import.meta.url), "utf8"));
   assert.ok(videos.length >= 1);
   assert.ok(videos.every((item) => item.file && item.title && /^\d{4}-\d{2}-\d{2}$/.test(item.date)));
+  await Promise.all(
+    videos.map((item) => access(new URL(`../public/posters/${item.file}.jpg`, import.meta.url))),
+  );
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
   await access(new URL("../public/og.png", import.meta.url));
 });

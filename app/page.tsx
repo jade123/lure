@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import videoItems from "../public/videos.json";
 
 type VideoItem = {
   file: string;
@@ -15,6 +16,10 @@ function fileUrl(file: string) {
   return `${COS_BASE}${encodeURIComponent(file)}`;
 }
 
+function posterUrl(file: string) {
+  return `/posters/${encodeURIComponent(file)}.jpg`;
+}
+
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("zh-CN", {
     year: "numeric",
@@ -23,66 +28,35 @@ function formatDate(date: string) {
   }).format(new Date(`${date}T12:00:00+08:00`));
 }
 
-function formatDuration(seconds: number) {
-  if (!Number.isFinite(seconds) || seconds <= 0) return "";
-  const minutes = Math.floor(seconds / 60);
-  const rest = Math.floor(seconds % 60);
-  return `${minutes}:${rest.toString().padStart(2, "0")}`;
-}
-
 function VideoStill({
   item,
   className = "",
+  priority = false,
 }: {
   item: VideoItem;
   className?: string;
+  priority?: boolean;
 }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [ready, setReady] = useState(false);
-  const [duration, setDuration] = useState("");
-
-  const showFrame = () => {
-    const video = ref.current;
-    if (!video) return;
-    setDuration(formatDuration(video.duration));
-    video.currentTime = Math.min(2, Math.max(0, video.duration / 12));
-  };
-
   return (
-    <div className={`video-still ${ready ? "is-ready" : ""} ${className}`}>
-      <video
-        ref={ref}
-        src={fileUrl(item.file)}
-        muted
-        playsInline
-        preload="metadata"
-        onLoadedMetadata={showFrame}
-        onSeeked={() => setReady(true)}
-        aria-hidden="true"
+    <div className={`video-still ${className}`}>
+      <img
+        src={posterUrl(item.file)}
+        alt=""
+        width="1280"
+        height="720"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "low"}
+        decoding="async"
       />
-      <span className="still-shimmer" aria-hidden="true" />
       <span className="play-mark" aria-hidden="true">
         <i />
       </span>
-      {duration && <span className="duration">{duration}</span>}
     </div>
   );
 }
 
 export default function Home() {
-  const [videos, setVideos] = useState<VideoItem[]>([]);
   const [active, setActive] = useState<VideoItem | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/videos.json")
-      .then((response) => {
-        if (!response.ok) throw new Error("视频清单读取失败");
-        return response.json() as Promise<VideoItem[]>;
-      })
-      .then((items) => setVideos(items))
-      .finally(() => setLoading(false));
-  }, []);
 
   useEffect(() => {
     if (!active) return;
@@ -97,9 +71,8 @@ export default function Home() {
     };
   }, [active]);
 
-  const sortedVideos = useMemo(
-    () => [...videos].sort((a, b) => b.date.localeCompare(a.date)),
-    [videos],
+  const sortedVideos = [...(videoItems as VideoItem[])].sort((a, b) =>
+    b.date.localeCompare(a.date),
   );
   const featured = sortedVideos[0];
   const archive = sortedVideos.slice(1);
@@ -125,7 +98,7 @@ export default function Home() {
               onClick={() => setActive(featured)}
               aria-label={`播放：${featured.title}`}
             >
-              <VideoStill item={featured} className="featured-still" />
+              <VideoStill item={featured} className="featured-still" priority />
             </button>
             <div className="featured-copy">
               <p className="eyebrow">最新发布</p>
@@ -140,7 +113,7 @@ export default function Home() {
         ) : (
           <div className="empty-state">
             <p className="eyebrow">雷强博客</p>
-            <h1>{loading ? "正在读取视频" : "第一条记录，正在路上"}</h1>
+            <h1>第一条记录，正在路上</h1>
             <p>水边见，下一竿见。</p>
           </div>
         )}
