@@ -24,6 +24,7 @@ test("renders the finished Chinese video site", async () => {
   const html = await response.text();
   assert.match(html, /雷强博客/);
   assert.match(html, /全部视频/);
+  assert.match(html, /粤ICP备2026121805号-1/);
   assert.match(html, /正在读取视频/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });

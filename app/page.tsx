@@ -178,8 +178,13 @@ export default function Home() {
       </section>
 
       <footer>
-        <span>雷强博客</span>
-        <span>记录每一次真实的抛投</span>
+        <span className="footer-brand">雷强博客</span>
+        <div className="footer-legal">
+          <span>记录每一次真实的抛投</span>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
+            粤ICP备2026121805号-1
+          </a>
+        </div>
       </footer>
 
       {active && (
