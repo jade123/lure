@@ -6,6 +6,7 @@ import { VIDEO_BASE_URL } from "./site-config";
 
 type VideoItem = {
   file: string;
+  poster?: string;
   title: string;
   date: string;
 };
@@ -14,8 +15,8 @@ function fileUrl(file: string) {
   return `${VIDEO_BASE_URL}${encodeURIComponent(file)}`;
 }
 
-function posterUrl(file: string) {
-  return `/posters/${encodeURIComponent(file)}.jpg`;
+function posterUrl(item: VideoItem) {
+  return `/posters/${encodeURIComponent(item.poster ?? item.file)}.jpg`;
 }
 
 function formatDate(date: string) {
@@ -38,7 +39,7 @@ function VideoStill({
   return (
     <div className={`video-still ${className}`}>
       <img
-        src={posterUrl(item.file)}
+        src={posterUrl(item)}
         alt=""
         width="1280"
         height="720"

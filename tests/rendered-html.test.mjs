@@ -36,7 +36,9 @@ test("ships video data without starter preview files", async () => {
   assert.ok(videos.length >= 1);
   assert.ok(videos.every((item) => item.file && item.title && /^\d{4}-\d{2}-\d{2}$/.test(item.date)));
   await Promise.all(
-    videos.map((item) => access(new URL(`../public/posters/${item.file}.jpg`, import.meta.url))),
+    videos.map((item) =>
+      access(new URL(`../public/posters/${item.poster ?? item.file}.jpg`, import.meta.url)),
+    ),
   );
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
   await access(new URL("../public/og.png", import.meta.url));
