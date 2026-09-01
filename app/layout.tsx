@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SITE_URL } from "./site-config";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.lure.red"),
+  metadataBase: new URL(SITE_URL),
   title: "雷强博客｜真实雷强作钓视频",
   description: "记录每一次真实的抛投，分享雷强实战、钓场观察与水边故事。",
   alternates: { canonical: "/" },
   openGraph: {
     title: "雷强博客",
     description: "记录每一次真实的抛投。",
-    url: "https://www.lure.red",
+    url: SITE_URL,
     siteName: "雷强博客",
     locale: "zh_CN",
     type: "website",

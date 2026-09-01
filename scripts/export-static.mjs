@@ -5,7 +5,7 @@ workerUrl.searchParams.set("export", Date.now().toString());
 const { default: worker } = await import(workerUrl.href);
 
 const response = await worker.fetch(
-  new Request("https://www.lure.red/", { headers: { accept: "text/html" } }),
+  new Request("http://www.lure.red/", { headers: { accept: "text/html" } }),
   { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
   { waitUntil() {}, passThroughOnException() {} },
 );

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import videoItems from "../public/videos.json";
+import { VIDEO_BASE_URL } from "./site-config";
 
 type VideoItem = {
   file: string;
@@ -9,11 +10,8 @@ type VideoItem = {
   date: string;
 };
 
-const COS_BASE =
-  "https://companyweb-1310747364.cos.ap-guangzhou.myqcloud.com/jade/assets/videos/";
-
 function fileUrl(file: string) {
-  return `${COS_BASE}${encodeURIComponent(file)}`;
+  return `${VIDEO_BASE_URL}${encodeURIComponent(file)}`;
 }
 
 function posterUrl(file: string) {
