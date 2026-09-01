@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import videoItems from "../public/videos.json";
 
 type VideoItem = {
@@ -9,7 +6,7 @@ type VideoItem = {
   date: string;
 };
 
-const VIDEO_BASE = "/media/";
+const VIDEO_BASE = "http://cnd.lure.red/jade/assets/videos/";
 
 function fileUrl(file: string) {
   return `${VIDEO_BASE}${encodeURIComponent(file)}`;
@@ -55,21 +52,6 @@ function VideoStill({
 }
 
 export default function Home() {
-  const [active, setActive] = useState<VideoItem | null>(null);
-
-  useEffect(() => {
-    if (!active) return;
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActive(null);
-    };
-    document.body.classList.add("modal-open");
-    window.addEventListener("keydown", close);
-    return () => {
-      document.body.classList.remove("modal-open");
-      window.removeEventListener("keydown", close);
-    };
-  }, [active]);
-
   const sortedVideos = [...(videoItems as VideoItem[])].sort((a, b) =>
     b.date.localeCompare(a.date),
   );
@@ -92,21 +74,28 @@ export default function Home() {
       <section id="top" className="hero" aria-label="最新发布">
         {featured ? (
           <>
-            <button
+            <a
               className="featured-media"
-              onClick={() => setActive(featured)}
+              href={fileUrl(featured.file)}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={`播放：${featured.title}`}
             >
               <VideoStill item={featured} className="featured-still" priority />
-            </button>
+            </a>
             <div className="featured-copy">
               <p className="eyebrow">最新发布</p>
               <h1>{featured.title}</h1>
               <p className="featured-date">{formatDate(featured.date)}</p>
-              <button className="primary-button" onClick={() => setActive(featured)}>
+              <a
+                className="primary-button"
+                href={fileUrl(featured.file)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className="button-play" aria-hidden="true" />
                 播放视频
-              </button>
+              </a>
             </div>
           </>
         ) : (
@@ -130,20 +119,27 @@ export default function Home() {
         <div className="video-grid">
           {archive.map((item, index) => (
             <article className="video-card" key={item.file}>
-              <button
+              <a
                 className="card-media"
-                onClick={() => setActive(item)}
+                href={fileUrl(item.file)}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={`播放：${item.title}`}
               >
                 <VideoStill item={item} />
-              </button>
-              <button className="card-copy" onClick={() => setActive(item)}>
+              </a>
+              <a
+                className="card-copy"
+                href={fileUrl(item.file)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className="card-index">{String(index + 2).padStart(2, "0")}</span>
                 <span>
                   <strong>{item.title}</strong>
                   <small>{formatDate(item.date)}</small>
                 </span>
-              </button>
+              </a>
             </article>
           ))}
         </div>
@@ -159,27 +155,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {active && (
-        <div className="player-modal" role="dialog" aria-modal="true" aria-label={active.title}>
-          <button
-            className="modal-backdrop"
-            aria-label="关闭播放器"
-            onClick={() => setActive(null)}
-          />
-          <div className="player-panel">
-            <div className="player-heading">
-              <div>
-                <p>{formatDate(active.date)}</p>
-                <h2>{active.title}</h2>
-              </div>
-              <button className="close-button" onClick={() => setActive(null)} aria-label="关闭">
-                ×
-              </button>
-            </div>
-            <video src={fileUrl(active.file)} controls autoPlay playsInline />
-          </div>
-        </div>
-      )}
     </main>
   );
 }
