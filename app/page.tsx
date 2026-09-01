@@ -10,7 +10,7 @@ type VideoItem = {
 };
 
 const COS_BASE =
-  "https://companyweb-1310747364.cos.ap-guangzhou.myqcloud.com/jade/assets/videos/";
+  "http://cnd.lure.red/jade/assets/videos/";
 
 function fileUrl(file: string) {
   return `${COS_BASE}${encodeURIComponent(file)}`;
