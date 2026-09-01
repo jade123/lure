@@ -2,22 +2,13 @@
 
 import { useEffect, useState } from "react";
 import videoItems from "../public/videos.json";
-import { VIDEO_BASE_URL } from "./site-config";
 
 type VideoItem = {
-  file: string;
-  poster?: string;
+  videoUrl: string;
+  posterUrl: string;
   title: string;
   date: string;
 };
-
-function fileUrl(file: string) {
-  return `${VIDEO_BASE_URL}${encodeURIComponent(file)}`;
-}
-
-function posterUrl(item: VideoItem) {
-  return `/posters/${encodeURIComponent(item.poster ?? item.file)}.jpg`;
-}
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("zh-CN", {
@@ -39,7 +30,7 @@ function VideoStill({
   return (
     <div className={`video-still ${className}`}>
       <img
-        src={posterUrl(item)}
+        src={item.posterUrl}
         alt=""
         width="1280"
         height="720"
@@ -129,7 +120,7 @@ export default function Home() {
 
         <div className="video-grid">
           {archive.map((item, index) => (
-            <article className="video-card" key={item.file}>
+            <article className="video-card" key={item.videoUrl}>
               <button
                 className="card-media"
                 onClick={() => setActive(item)}
@@ -176,7 +167,7 @@ export default function Home() {
                 ×
               </button>
             </div>
-            <video src={fileUrl(active.file)} controls autoPlay playsInline />
+            <video src={active.videoUrl} controls autoPlay playsInline />
           </div>
         </div>
       )}

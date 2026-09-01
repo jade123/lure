@@ -34,11 +34,17 @@ test("renders the finished Chinese video site", async () => {
 test("ships video data without starter preview files", async () => {
   const videos = JSON.parse(await readFile(new URL("../public/videos.json", import.meta.url), "utf8"));
   assert.ok(videos.length >= 1);
-  assert.ok(videos.every((item) => item.file && item.title && /^\d{4}-\d{2}-\d{2}$/.test(item.date)));
-  await Promise.all(
-    videos.map((item) =>
-      access(new URL(`../public/posters/${item.poster ?? item.file}.jpg`, import.meta.url)),
+  assert.ok(
+    videos.every(
+      (item) =>
+        item.videoUrl.startsWith("http://cnd.lure.red/jade/assets/videos/") &&
+        item.posterUrl.startsWith("/posters/") &&
+        item.title &&
+        /^\d{4}-\d{2}-\d{2}$/.test(item.date),
     ),
+  );
+  await Promise.all(
+    videos.map((item) => access(new URL(`../public${item.posterUrl}`, import.meta.url))),
   );
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
   await access(new URL("../public/og.png", import.meta.url));
@@ -47,5 +53,6 @@ test("ships video data without starter preview files", async () => {
 test("keeps the trial site and CDN on HTTP", async () => {
   const config = await readFile(new URL("../app/site-config.ts", import.meta.url), "utf8");
   assert.match(config, /SITE_URL = "http:\/\/www\.lure\.red"/);
-  assert.match(config, /VIDEO_BASE_URL = "http:\/\/cnd\.lure\.red\/jade\/assets\/videos\/"/);
+  const videos = JSON.parse(await readFile(new URL("../public/videos.json", import.meta.url), "utf8"));
+  assert.ok(videos.every((item) => item.videoUrl.startsWith("http://")));
 });

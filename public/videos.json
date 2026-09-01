@@ -1,67 +1,73 @@
 [
   {
-    "file": "9月1日-15Mbps.mp4",
-    "poster": "9月1日.mov",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/9月1日-15Mbps.mp4",
+    "posterUrl": "/posters/9月1日.mov.jpg",
     "title": "九月第一竿，草区慢搜实录",
     "date": "2026-09-01"
   },
   {
-    "file": "9月1日 (1).mov",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/9月1日 (1)-15Mbps.mp4",
+    "posterUrl": "/posters/9月1日 (1).mov.jpg",
     "title": "同行水草区，船钓搜索记录",
     "date": "2026-09-01"
   },
   {
-    "file": "1788083767245.MOV",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/1788083767245.MOV",
+    "posterUrl": "/posters/1788083767245.MOV.jpg",
     "title": "傍晚窗口期，水草边的一竿",
     "date": "2026-08-30"
   },
   {
-    "file": "dji_mimo_20260830_072302_20260830072303_1788064204703_video.MP4",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/dji_mimo_20260830_072302_20260830072303_1788064204703_video.MP4",
+    "posterUrl": "/posters/dji_mimo_20260830_072302_20260830072303_1788064204703_video.MP4.jpg",
     "title": "清晨七点，荷叶深处找鱼",
     "date": "2026-08-30"
   },
   {
-    "file": "1788067932815.MOV",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/1788067932815.MOV",
+    "posterUrl": "/posters/1788067932815.MOV.jpg",
     "title": "夏末水面搜索实录",
     "date": "2026-08-30"
   },
   {
-    "file": "dji_mimo_20260829_181130_20260829181131_1788005446290_video.MP4",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/dji_mimo_20260829_181130_20260829181131_1788005446290_video.MP4",
+    "posterUrl": "/posters/dji_mimo_20260829_181130_20260829181131_1788005446290_video.MP4.jpg",
     "title": "日落前的最后一轮搜索",
     "date": "2026-08-29"
   },
   {
-    "file": "dji_mimo_20260827_115928_20260827115927_1787815215263_video.MP4",
-    "title": "正午障碍区，耐心比运气重要",
-    "date": "2026-08-27"
-  },
-  {
-    "file": "1787816411328.MOV",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/1787816411328.MOV",
+    "posterUrl": "/posters/1787816411328.MOV.jpg",
     "title": "岸边水草区探钓记录",
     "date": "2026-08-27"
   },
   {
-    "file": "1784255130222.MOV",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/1784255130222.MOV",
+    "posterUrl": "/posters/1784255130222.MOV.jpg",
     "title": "大黑鱼与装备，一次漂亮收获",
     "date": "2026-07-17"
   },
   {
-    "file": "7月14日.mov",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/7月14日.mov",
+    "posterUrl": "/posters/7月14日.mov.jpg",
     "title": "弯弓瞬间，岸边中鱼实录",
     "date": "2026-07-14"
   },
   {
-    "file": "也需要.MOV",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/也需要.MOV",
+    "posterUrl": "/posters/也需要.MOV.jpg",
     "title": "草岸收鱼，近距离看大黑",
     "date": "2026-07-12"
   },
   {
-    "file": "1759900729193.MOV",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/1759900729193.MOV",
+    "posterUrl": "/posters/1759900729193.MOV.jpg",
     "title": "秋日雷强，一次真实的出钓",
     "date": "2025-10-08"
   },
   {
-    "file": "dji_mimo_20250927_082518_20250927082519_1758953205300_video.MP4",
+    "videoUrl": "http://cnd.lure.red/jade/assets/videos/dji_mimo_20250927_082518_20250927082519_1758953205300_video.MP4",
+    "posterUrl": "/posters/dji_mimo_20250927_082518_20250927082519_1758953205300_video.MP4.jpg",
     "title": "清晨第一竿，水草区实战",
     "date": "2025-09-27"
   }

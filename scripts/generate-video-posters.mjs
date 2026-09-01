@@ -17,11 +17,13 @@ let generated = 0;
 let skipped = 0;
 
 for (const video of videos) {
-  const source = join(sourceDir, video.file);
-  const output = join(outputDir, `${video.file}.jpg`);
+  const sourceName = decodeURIComponent(new URL(video.videoUrl).pathname.split("/").pop());
+  const posterName = decodeURIComponent(new URL(video.posterUrl, "http://localhost").pathname.split("/").pop());
+  const source = join(sourceDir, sourceName);
+  const output = join(outputDir, posterName);
 
   if (!existsSync(source)) {
-    console.warn(`跳过（本地未找到）：${video.file}`);
+    console.warn(`跳过（本地未找到）：${sourceName}`);
     skipped += 1;
     continue;
   }
