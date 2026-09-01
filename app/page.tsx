@@ -9,11 +9,10 @@ type VideoItem = {
   date: string;
 };
 
-const COS_BASE =
-  "http://cnd.lure.red/jade/assets/videos/";
+const VIDEO_BASE = "/media/";
 
 function fileUrl(file: string) {
-  return `${COS_BASE}${encodeURIComponent(file)}`;
+  return `${VIDEO_BASE}${encodeURIComponent(file)}`;
 }
 
 function posterUrl(file: string) {
