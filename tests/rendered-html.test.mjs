@@ -27,8 +27,7 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /粤ICP备2026121805号-1/);
   assert.match(html, /傍晚窗口期，水草边的一竿/);
   assert.match(html, /\/posters\/1788083767245\.MOV\.jpg/);
-  assert.match(html, /href="http:\/\/cnd\.lure\.red\/jade\/assets\/videos\//);
-  assert.doesNotMatch(html, /<video\b|\/media\//);
+  assert.doesNotMatch(html, /<video\b|\/media\/|\/assets\/videos\//);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });
 
