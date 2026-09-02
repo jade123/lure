@@ -4,13 +4,13 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -27,8 +27,21 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /粤ICP备2026121805号-1/);
   assert.match(html, /傍晚窗口期，水草边的一竿/);
   assert.match(html, /\/posters\/1788083767245\.MOV\.jpg/);
+  assert.match(html, /小游戏/);
+  assert.match(html, /game-promo-float/);
+  assert.doesNotMatch(html, /game-promo-wrap/);
   assert.doesNotMatch(html, /<video\b|\/media\/|\/assets\/videos\//);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
+});
+
+test("renders the game promotion landing page", async () => {
+  const response = await render("/game");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /满格收纳小屋/);
+  assert.match(html, /微信扫码开始挑战/);
+  assert.match(html, /full-grid-home-code\.jpg/);
+  assert.match(html, /rel="canonical" href="http:\/\/www\.lure\.red\/game\/"/);
 });
 
 test("ships video data without starter preview files", async () => {

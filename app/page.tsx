@@ -47,6 +47,11 @@ function VideoStill({
 
 export default function Home() {
   const [active, setActive] = useState<VideoItem | null>(null);
+  const [showGamePromo, setShowGamePromo] = useState(true);
+
+  useEffect(() => {
+    setShowGamePromo(sessionStorage.getItem("game-promo-dismissed") !== "1");
+  }, []);
 
   useEffect(() => {
     if (!active) return;
@@ -67,6 +72,11 @@ export default function Home() {
   const featured = sortedVideos[0];
   const archive = sortedVideos.slice(1);
 
+  const dismissGamePromo = () => {
+    sessionStorage.setItem("game-promo-dismissed", "1");
+    setShowGamePromo(false);
+  };
+
   return (
     <main>
       <header className="site-header">
@@ -77,7 +87,7 @@ export default function Home() {
           <a className="nav-active" href="#videos">
             全部视频
           </a>
-          <a href="/game">小游戏</a>
+          <a href="/game/">小游戏</a>
         </nav>
       </header>
 
@@ -108,24 +118,6 @@ export default function Home() {
             <p>水边见，下一竿见。</p>
           </div>
         )}
-      </section>
-
-      <section className="game-promo-wrap" aria-labelledby="game-promo-title">
-        <a className="game-promo" href="/game">
-          <img
-            src="/full-grid-home-banner.png"
-            alt="满格收纳小屋：把不同形状的物品装入柜格"
-            width="1200"
-            height="630"
-            loading="lazy"
-          />
-          <span className="game-promo-copy">
-            <small>微信小游戏 · 免费挑战</small>
-            <strong id="game-promo-title">满格收纳小屋</strong>
-            <span>旋转、摆放，刚好填满整个柜子</span>
-            <b>立即挑战 →</b>
-          </span>
-        </a>
       </section>
 
       <section id="videos" className="archive" aria-labelledby="archive-title">
@@ -168,6 +160,29 @@ export default function Home() {
           </a>
         </div>
       </footer>
+
+      {showGamePromo && (
+        <aside className="game-promo-float" aria-label="小游戏推荐">
+          <a href="/game/" aria-label="进入满格收纳小屋小游戏介绍页">
+            <img
+              src="/full-grid-home-thumb.jpg"
+              alt=""
+              width="480"
+              height="252"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>
+              <small>微信小游戏</small>
+              <strong>满格收纳小屋</strong>
+              <em>免费挑战 · 立即进入 →</em>
+            </span>
+          </a>
+          <button type="button" onClick={dismissGamePromo} aria-label="关闭小游戏推荐">
+            ×
+          </button>
+        </aside>
+      )}
 
       {active && (
         <div className="player-modal" role="dialog" aria-modal="true" aria-label={active.title}>

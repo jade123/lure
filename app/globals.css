@@ -85,84 +85,100 @@ button {
   background: var(--accent);
 }
 
-.game-promo-wrap {
-  width: min(1440px, calc(100% - 72px));
-  margin: 58px auto 0;
-}
-
-.game-promo {
-  position: relative;
-  display: block;
-  min-height: 360px;
-  overflow: hidden;
-  border: 1px solid #42382e;
+.game-promo-float {
+  position: fixed;
+  right: max(22px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 30;
+  width: 310px;
+  overflow: visible;
+  border: 1px solid rgba(255, 126, 77, 0.38);
   border-radius: 14px;
-  background: #ead7b7;
-  color: #30241d;
+  background: rgba(18, 20, 20, 0.96);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(16px);
+  animation: game-promo-in 0.35s ease-out both;
+}
+
+.game-promo-float > a {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  min-height: 86px;
+  overflow: hidden;
+  border-radius: inherit;
+  color: var(--text);
   text-decoration: none;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
 }
 
-.game-promo > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
+.game-promo-float img {
+  width: 86px;
   height: 100%;
+  min-height: 86px;
   object-fit: cover;
-  transition: transform 0.55s ease;
 }
 
-.game-promo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(255, 247, 230, 0.98) 0%, rgba(255, 247, 230, 0.86) 34%, transparent 62%);
-}
-
-.game-promo:hover > img {
-  transform: scale(1.018);
-}
-
-.game-promo-copy {
-  position: relative;
-  z-index: 1;
-  width: min(46%, 520px);
-  min-height: 360px;
-  padding: 54px clamp(28px, 5vw, 72px);
+.game-promo-float a > span {
+  min-width: 0;
+  padding: 13px 34px 12px 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
 }
 
-.game-promo-copy small {
-  color: #b5523e;
-  font-size: 13px;
+.game-promo-float small {
+  color: #ff7e4d;
+  font-size: 11px;
   font-weight: 750;
   letter-spacing: 0.08em;
 }
 
-.game-promo-copy strong {
-  margin-top: 16px;
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 1.05;
-  letter-spacing: -0.05em;
+.game-promo-float strong {
+  margin-top: 4px;
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.game-promo-copy > span {
-  margin-top: 18px;
-  color: #6f5a4b;
-  font-size: clamp(15px, 1.4vw, 19px);
-  line-height: 1.6;
+.game-promo-float em {
+  margin-top: 5px;
+  color: #aeb2b3;
+  font-size: 12px;
+  font-style: normal;
 }
 
-.game-promo-copy b {
-  margin-top: 28px;
-  padding: 14px 22px;
-  border-radius: 8px;
-  background: #e96f59;
+.game-promo-float > button {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #d7d9da;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.game-promo-float > button:hover,
+.game-promo-float > button:focus-visible {
+  background: var(--accent);
   color: #fff;
-  font-size: 15px;
+}
+
+@keyframes game-promo-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .game-page {
@@ -634,7 +650,6 @@ footer {
   .hero,
   .archive,
   footer,
-  .game-promo-wrap,
   .game-page-header,
   .game-landing {
     width: min(100% - 32px, 1440px);
@@ -694,31 +709,31 @@ footer {
     padding: 42px 0 60px;
   }
 
-  .game-promo-wrap {
-    margin-top: 34px;
+  .game-promo-float {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    left: max(12px, env(safe-area-inset-left));
+    width: auto;
+    max-width: 430px;
+    margin-inline: auto;
   }
 
-  .game-promo,
-  .game-promo-copy {
-    min-height: 420px;
+  .game-promo-float > a {
+    grid-template-columns: 68px 1fr;
+    min-height: 68px;
   }
 
-  .game-promo::after {
-    background: linear-gradient(180deg, rgba(255, 247, 230, 0.98) 0%, rgba(255, 247, 230, 0.86) 48%, rgba(255, 247, 230, 0.08) 78%);
+  .game-promo-float img {
+    width: 68px;
+    min-height: 68px;
   }
 
-  .game-promo > img {
-    object-position: 64% center;
+  .game-promo-float a > span {
+    padding-block: 9px;
   }
 
-  .game-promo-copy {
-    width: 100%;
-    padding: 34px 26px 170px;
-    justify-content: flex-start;
-  }
-
-  .game-promo-copy strong {
-    font-size: 38px;
+  .game-promo-float strong {
+    font-size: 16px;
   }
 
   .game-page-header {

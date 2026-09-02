@@ -3,6 +3,27 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "满格收纳小屋｜微信小游戏",
   description: "旋转并摆放不同形状的物品，在有限步数内将柜格完整填满。",
+  alternates: { canonical: "/game/" },
+  openGraph: {
+    title: "满格收纳小屋｜微信小游戏",
+    description: "旋转、摆放，把不同形状的物品刚好装满整个柜子。",
+    url: "/game/",
+    type: "website",
+    images: [
+      {
+        url: "/full-grid-home-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "满格收纳小屋游戏画面",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "满格收纳小屋｜微信小游戏",
+    description: "旋转、摆放，把不同形状的物品刚好装满整个柜子。",
+    images: ["/full-grid-home-banner.png"],
+  },
 };
 
 export default function GamePromotionPage() {
