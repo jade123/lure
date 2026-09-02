@@ -50,10 +50,6 @@ export default function Home() {
   const [showGamePromo, setShowGamePromo] = useState(true);
 
   useEffect(() => {
-    setShowGamePromo(sessionStorage.getItem("game-promo-dismissed") !== "1");
-  }, []);
-
-  useEffect(() => {
     if (!active) return;
     const close = (event: KeyboardEvent) => {
       if (event.key === "Escape") setActive(null);
@@ -73,7 +69,6 @@ export default function Home() {
   const archive = sortedVideos.slice(1);
 
   const dismissGamePromo = () => {
-    sessionStorage.setItem("game-promo-dismissed", "1");
     setShowGamePromo(false);
   };
 
