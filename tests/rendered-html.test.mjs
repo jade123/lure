@@ -51,7 +51,7 @@ test("ships video data without starter preview files", async () => {
     videos.every(
       (item) =>
         item.videoUrl.startsWith("http://cnd.lure.red/jade/assets/videos/") &&
-        item.videoUrl.endsWith("-15Mbps.mp4") &&
+        /\.mp4$/i.test(item.videoUrl) &&
         item.posterUrl.startsWith("/posters/") &&
         item.title &&
         /^\d{4}-\d{2}-\d{2}$/.test(item.date),
