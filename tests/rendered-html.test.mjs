@@ -29,6 +29,9 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /\/posters\/1788083767245\.MOV\.jpg/);
   assert.match(html, /小游戏/);
   assert.match(html, /game-promo-float/);
+  assert.match(html, /在抖音，继续看真实雷强实战/);
+  assert.match(html, /@路亚码农/);
+  assert.match(html, /douyin-luyamanong\.jpg/);
   assert.doesNotMatch(html, /game-promo-wrap/);
   assert.doesNotMatch(html, /<video\b|\/media\/|\/assets\/videos\//);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
@@ -62,6 +65,7 @@ test("ships video data without starter preview files", async () => {
   );
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
   await access(new URL("../public/og.png", import.meta.url));
+  await access(new URL("../public/douyin-luyamanong.jpg", import.meta.url));
 });
 
 test("keeps the trial site and CDN on HTTP", async () => {

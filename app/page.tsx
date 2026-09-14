@@ -83,6 +83,7 @@ export default function Home() {
             全部视频
           </a>
           <a href="/game/">小游戏</a>
+          <a href="#douyin">关注抖音</a>
         </nav>
       </header>
 
@@ -144,6 +145,43 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section id="douyin" className="douyin-follow" aria-labelledby="douyin-title">
+        <div className="douyin-copy">
+          <p className="douyin-kicker">抖音追更</p>
+          <h2 id="douyin-title">在抖音，继续看真实雷强实战</h2>
+          <p className="douyin-lead">
+            短视频更新更快。水草区搜索、扬竿中鱼和装备细节，都会第一时间发在抖音。
+          </p>
+          <div className="douyin-account">
+            <span>DOUYIN</span>
+            <strong>@路亚码农</strong>
+            <small>抖音号：385933823</small>
+          </div>
+          <div className="douyin-actions">
+            <a href="/douyin-luyamanong.jpg" download>
+              保存抖音码
+            </a>
+            <p>保存图片后，打开抖音扫一扫</p>
+          </div>
+        </div>
+
+        <a
+          className="douyin-code"
+          href="/douyin-luyamanong.jpg"
+          aria-label="查看路亚码农抖音账号二维码"
+        >
+          <img
+            src="/douyin-luyamanong.jpg"
+            alt="路亚码农抖音账号二维码，抖音号 385933823"
+            width="1125"
+            height="1680"
+            loading="lazy"
+            decoding="async"
+          />
+          <span>扫码关注 · 看更多实战片段</span>
+        </a>
       </section>
 
       <footer>
