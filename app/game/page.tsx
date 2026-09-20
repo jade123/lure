@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "满格收纳小屋｜微信小游戏",
-  description: "旋转并摆放不同形状的物品，在有限步数内将柜格完整填满。",
+  description: "第11关只差一步，你会先放哪一块？旋转并摆放不同形状的物品，在有限步数内填满柜格。",
   alternates: { canonical: "/game/" },
   openGraph: {
     title: "满格收纳小屋｜微信小游戏",
@@ -52,8 +52,10 @@ export default function GamePromotionPage() {
           <p className="game-label">微信小游戏 · 免费游玩</p>
           <h1 id="game-title">满格收纳小屋</h1>
           <p className="game-lead">
-            旋转不同形状的物品，在有限步数内把柜格刚好填满。每局只需几分钟，越往后越烧脑。
+            看似只是把图形放进柜格，第一步放错，最后一块就可能无处可放。每局只需几分钟，越往后越烧脑。
           </p>
+
+          <p className="game-challenge">第11关：只差一步时，你会先放哪一块？</p>
 
           <div className="game-code-card">
             <img
@@ -63,7 +65,7 @@ export default function GamePromotionPage() {
               height="258"
             />
             <div>
-              <strong>微信扫码开始挑战</strong>
+              <strong>微信扫码挑战：你能一次填满吗？</strong>
               <p>电脑访问：打开微信扫一扫</p>
               <p>手机微信访问：长按小程序码识别</p>
               <p>也可在微信搜索“满格收纳小屋”</p>

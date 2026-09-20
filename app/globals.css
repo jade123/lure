@@ -252,6 +252,17 @@ button {
   line-height: 1.8;
 }
 
+.game-challenge {
+  margin: -12px 0 22px;
+  padding: 12px 14px;
+  border: 1px solid rgba(239, 125, 106, 0.38);
+  border-radius: 10px;
+  background: rgba(239, 125, 106, 0.08);
+  color: #f2c6bc;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .game-code-card {
   padding: 18px;
   display: grid;

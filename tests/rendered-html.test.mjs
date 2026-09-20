@@ -42,7 +42,8 @@ test("renders the game promotion landing page", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /满格收纳小屋/);
-  assert.match(html, /微信扫码开始挑战/);
+  assert.match(html, /第11关：只差一步时，你会先放哪一块？/);
+  assert.match(html, /微信扫码挑战：你能一次填满吗？/);
   assert.match(html, /full-grid-home-code\.jpg/);
   assert.match(html, /rel="canonical" href="http:\/\/www\.lure\.red\/game\/"/);
 });

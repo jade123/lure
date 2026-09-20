@@ -208,7 +208,7 @@ export default function Home() {
             <span>
               <small>微信小游戏</small>
               <strong>满格收纳小屋</strong>
-              <em>免费挑战 · 立即进入 →</em>
+              <em>第11关挑战 · 你会先放哪块？ →</em>
             </span>
           </a>
           <button type="button" onClick={dismissGamePromo} aria-label="关闭小游戏推荐">
