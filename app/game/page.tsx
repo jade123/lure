@@ -1,80 +1,97 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { games } from "../games";
 
 export const metadata: Metadata = {
-  title: "满格收纳小屋｜微信小游戏",
-  description: "第11关只差一步，你会先放哪一块？旋转并摆放不同形状的物品，在有限步数内填满柜格。",
+  title: "我的微信小游戏｜雷强博客",
+  description: "实况路亚打黑与满格收纳小屋，两款免费微信小游戏。",
   alternates: { canonical: "/game/" },
   openGraph: {
-    title: "满格收纳小屋｜微信小游戏",
-    description: "旋转、摆放，把不同形状的物品刚好装满整个柜子。",
+    title: "我的微信小游戏｜雷强博客",
+    description: "第一视角雷强模拟与轻松收纳闯关，微信扫码即可游玩。",
     url: "/game/",
     type: "website",
     images: [
       {
-        url: "/full-grid-home-banner.png",
+        url: "/live-lure-cover.jpg",
         width: 1200,
-        height: 630,
-        alt: "满格收纳小屋游戏画面",
+        height: 675,
+        alt: "实况路亚打黑游戏画面",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "满格收纳小屋｜微信小游戏",
-    description: "旋转、摆放，把不同形状的物品刚好装满整个柜子。",
-    images: ["/full-grid-home-banner.png"],
-  },
 };
 
-export default function GamePromotionPage() {
+export default function GamesPage() {
   return (
     <main className="game-page">
       <header className="game-page-header">
-        <a className="brand" href="/" aria-label="返回雷强博客首页">
+        <Link className="brand" href="/" aria-label="返回雷强博客首页">
           雷强博客
-        </a>
-        <a className="game-back" href="/">
+        </Link>
+        <Link className="game-back" href="/">
           返回首页
-        </a>
+        </Link>
       </header>
 
-      <section className="game-landing" aria-labelledby="game-title">
-        <div className="game-art">
-          <img
-            src="/full-grid-home-banner.png"
-            alt="满格收纳小屋游戏画面"
-            width="1200"
-            height="630"
-          />
-        </div>
-
-        <div className="game-details">
-          <p className="game-label">微信小游戏 · 免费游玩</p>
-          <h1 id="game-title">满格收纳小屋</h1>
-          <p className="game-lead">
-            看似只是把图形放进柜格，第一步放错，最后一块就可能无处可放。每局只需几分钟，越往后越烧脑。
-          </p>
-
-          <p className="game-challenge">第11关：只差一步时，你会先放哪一块？</p>
-
-          <div className="game-code-card">
-            <img
-              src="/full-grid-home-code.jpg"
-              alt="满格收纳小屋微信小程序码"
-              width="258"
-              height="258"
-            />
-            <div>
-              <strong>微信扫码挑战：你能一次填满吗？</strong>
-              <p>电脑访问：打开微信扫一扫</p>
-              <p>手机微信访问：长按小程序码识别</p>
-              <p>也可在微信搜索“满格收纳小屋”</p>
-            </div>
-          </div>
-
-          <p className="game-note">无需下载 · 自动保存闯关进度</p>
-        </div>
+      <section className="games-page-intro" aria-labelledby="games-page-title">
+        <p>MY MINI GAMES</p>
+        <h1 id="games-page-title">我做的微信小游戏</h1>
+        <span>不用下载，微信扫码就能玩。</span>
       </section>
+
+      <div className="games-page-list">
+        {games.map((game, index) => (
+          <section className="game-detail-card" id={game.slug} key={game.slug}>
+            <div className="game-detail-art">
+              <img
+                src={game.cover}
+                alt={`${game.name}游戏画面`}
+                width="1200"
+                height="675"
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+            </div>
+
+            <div className="game-detail-copy">
+              <p className="game-label">微信小游戏 · 免费游玩</p>
+              <h2>{game.name}</h2>
+              <strong>{game.label}</strong>
+              <p className="game-detail-description">{game.description}</p>
+
+              {game.directUrl ? (
+                <a className="game-direct-button" href={game.directUrl}>
+                  微信内直接打开
+                </a>
+              ) : null}
+
+              <a
+                className={`game-qr-card game-qr-${game.qrFormat}`}
+                href={game.qrCode}
+                aria-label={`查看${game.name}小程序码`}
+              >
+                <img
+                  src={game.qrCode}
+                  alt={`${game.name}微信小程序码`}
+                  width={game.qrFormat === "wide" ? "1086" : "258"}
+                  height={game.qrFormat === "wide" ? "400" : "258"}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>
+                  <b>微信扫码开始游戏</b>
+                  <small>电脑：打开微信扫一扫</small>
+                  <small>手机微信：点开后长按识别</small>
+                  <small>也可搜索“{game.name}”</small>
+                </span>
+              </a>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <p className="games-page-note">两款游戏均已正式上线 · 无需下载安装</p>
     </main>
   );
 }

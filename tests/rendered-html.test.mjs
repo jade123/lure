@@ -2,8 +2,6 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-const root = new URL("../", import.meta.url);
-
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -29,6 +27,10 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /\/posters\/1788083767245\.MOV\.jpg/);
   assert.match(html, /小游戏/);
   assert.match(html, /game-promo-float/);
+  assert.match(html, /我的微信小游戏/);
+  assert.match(html, /实况路亚打黑/);
+  assert.match(html, /满格收纳小屋/);
+  assert.match(html, /live-lure-cover\.jpg/);
   assert.match(html, /在抖音，继续看真实雷强实战/);
   assert.match(html, /@路亚码农/);
   assert.match(html, /douyin-luyamanong\.jpg/);
@@ -37,13 +39,16 @@ test("renders the finished Chinese video site", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });
 
-test("renders the game promotion landing page", async () => {
+test("renders the two-game promotion landing page", async () => {
   const response = await render("/game");
   assert.equal(response.status, 200);
   const html = await response.text();
+  assert.match(html, /我做的微信小游戏/);
+  assert.match(html, /实况路亚打黑/);
   assert.match(html, /满格收纳小屋/);
-  assert.match(html, /第11关：只差一步时，你会先放哪一块？/);
-  assert.match(html, /微信扫码挑战：你能一次填满吗？/);
+  assert.match(html, /第一视角雷强模拟/);
+  assert.match(html, /微信扫码开始游戏/);
+  assert.match(html, /live-lure-code\.png/);
   assert.match(html, /full-grid-home-code\.jpg/);
   assert.match(html, /rel="canonical" href="http:\/\/www\.lure\.red\/game\/"/);
 });
@@ -67,6 +72,8 @@ test("ships video data without starter preview files", async () => {
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
   await access(new URL("../public/og.png", import.meta.url));
   await access(new URL("../public/douyin-luyamanong.jpg", import.meta.url));
+  await access(new URL("../public/live-lure-cover.jpg", import.meta.url));
+  await access(new URL("../public/live-lure-code.png", import.meta.url));
 });
 
 test("keeps the trial site and CDN on HTTP", async () => {

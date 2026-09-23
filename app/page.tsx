@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import videoItems from "../public/videos.json";
+import { games } from "./games";
 
 type VideoItem = {
   videoUrl: string;
@@ -82,7 +83,7 @@ export default function Home() {
           <a className="nav-active" href="#videos">
             全部视频
           </a>
-          <a href="/game/">小游戏</a>
+          <a href="#games">小游戏</a>
           <a href="#douyin">关注抖音</a>
         </nav>
       </header>
@@ -147,6 +148,40 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="games" className="games-showcase" aria-labelledby="games-title">
+        <div className="section-heading games-heading">
+          <div>
+            <p className="section-kicker">MY MINI GAMES</p>
+            <h2 id="games-title">我的微信小游戏</h2>
+          </div>
+          <a href="/game/">查看游戏与小程序码</a>
+        </div>
+
+        <div className="games-grid">
+          {games.map((game, index) => (
+            <a className="game-home-card" href={`/game/#${game.slug}`} key={game.slug}>
+              <div className="game-home-art">
+                <img
+                  src={game.cover}
+                  alt={`${game.name}游戏画面`}
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div className="game-home-copy">
+                <p>{game.label}</p>
+                <h3>{game.name}</h3>
+                <small>{game.highlight}</small>
+                <strong>微信扫码游玩 <i aria-hidden="true">→</i></strong>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section id="douyin" className="douyin-follow" aria-labelledby="douyin-title">
         <div className="douyin-copy">
           <p className="douyin-kicker">抖音追更</p>
@@ -196,19 +231,19 @@ export default function Home() {
 
       {showGamePromo && (
         <aside className="game-promo-float" aria-label="小游戏推荐">
-          <a href="/game/" aria-label="进入满格收纳小屋小游戏介绍页">
+          <a href="#games" aria-label="查看我的两款微信小游戏">
             <img
-              src="/full-grid-home-thumb.jpg"
+              src="/live-lure-cover.jpg"
               alt=""
-              width="480"
-              height="252"
+              width="1920"
+              height="1080"
               loading="lazy"
               decoding="async"
             />
             <span>
-              <small>微信小游戏</small>
-              <strong>满格收纳小屋</strong>
-              <em>第11关挑战 · 你会先放哪块？ →</em>
+              <small>我的微信小游戏</small>
+              <strong>2 款游戏，免费游玩</strong>
+              <em>实况打黑 · 收纳闯关 →</em>
             </span>
           </a>
           <button type="button" onClick={dismissGamePromo} aria-label="关闭小游戏推荐">
@@ -234,6 +269,8 @@ export default function Home() {
                 ×
               </button>
             </div>
+            {/* Video logs are recorded outdoors and do not include a separate caption track. */}
+            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
             <video src={active.videoUrl} controls autoPlay playsInline />
           </div>
         </div>

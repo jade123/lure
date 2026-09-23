@@ -302,6 +302,7 @@ button {
 
 .hero,
 .archive,
+.games-showcase,
 .douyin-follow,
 footer {
   width: min(1440px, calc(100% - 72px));
@@ -538,6 +539,281 @@ footer {
   margin-top: 7px;
   color: var(--muted);
   font-size: 12px;
+}
+
+.games-showcase {
+  padding: 8px 0 82px;
+}
+
+.games-heading > a {
+  margin-bottom: 5px;
+  color: #b7bbbc;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.games-heading > a:hover {
+  color: var(--text);
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.game-home-card {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(190px, 0.78fr);
+  overflow: hidden;
+  border: 1px solid #303537;
+  border-radius: 12px;
+  background: #111416;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.22s ease, transform 0.22s ease;
+}
+
+.game-home-card:hover {
+  border-color: #596063;
+  transform: translateY(-3px);
+}
+
+.game-home-art {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  background: #171b1d;
+}
+
+.game-home-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.game-home-card:hover .game-home-art img {
+  transform: scale(1.025);
+}
+
+.game-home-art > span {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  background: rgba(10, 12, 13, 0.72);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 750;
+  backdrop-filter: blur(8px);
+}
+
+.game-home-copy {
+  min-width: 0;
+  padding: 28px 25px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-home-copy p {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+}
+
+.game-home-copy h3 {
+  margin: 0;
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.18;
+  letter-spacing: -0.04em;
+}
+
+.game-home-copy small {
+  margin-top: 13px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.game-home-copy strong {
+  margin-top: 30px;
+  color: #e6e4df;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.game-home-copy i {
+  margin-left: 6px;
+  color: var(--accent);
+  font-style: normal;
+}
+
+.games-page-intro,
+.games-page-list,
+.games-page-note {
+  width: min(1240px, calc(100% - 72px));
+  margin-inline: auto;
+}
+
+.games-page-intro {
+  padding: 72px 0 46px;
+}
+
+.games-page-intro p {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.2em;
+}
+
+.games-page-intro h1 {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+}
+
+.games-page-intro span {
+  display: block;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.games-page-list {
+  display: grid;
+  gap: 28px;
+}
+
+.game-detail-card {
+  scroll-margin-top: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(350px, 0.78fr);
+  overflow: hidden;
+  border: 1px solid #303537;
+  border-radius: 16px;
+  background: #111416;
+}
+
+.game-detail-art {
+  min-height: 540px;
+  background: #171b1d;
+}
+
+.game-detail-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-detail-copy {
+  padding: clamp(30px, 4vw, 54px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-detail-copy h2 {
+  margin: 0;
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1.07;
+  letter-spacing: -0.05em;
+}
+
+.game-detail-copy > strong {
+  margin-top: 12px;
+  color: #d3d6d7;
+  font-size: 15px;
+}
+
+.game-detail-description {
+  margin: 18px 0 26px;
+  color: #a9adaf;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.game-direct-button {
+  width: fit-content;
+  min-height: 46px;
+  margin-bottom: 16px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 7px;
+  background: #07c160;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.game-qr-card {
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  border-radius: 12px;
+  background: #f5f5f2;
+  color: #252829;
+  text-decoration: none;
+}
+
+.game-qr-card img {
+  display: block;
+  width: 112px;
+  height: 112px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.game-qr-wide {
+  grid-template-columns: 1fr;
+}
+
+.game-qr-wide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2.715 / 1;
+  object-fit: contain;
+}
+
+.game-qr-wide > span {
+  padding-inline: 4px;
+}
+
+.game-qr-card b,
+.game-qr-card small {
+  display: block;
+}
+
+.game-qr-card b {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.game-qr-card small {
+  margin-top: 3px;
+  color: #686d6f;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.games-page-note {
+  padding: 30px 0 66px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
 }
 
 .douyin-follow {
@@ -808,10 +1084,14 @@ footer {
   .site-header,
   .hero,
   .archive,
+  .games-showcase,
   .douyin-follow,
   footer,
   .game-page-header,
-  .game-landing {
+  .game-landing,
+  .games-page-intro,
+  .games-page-list,
+  .games-page-note {
     width: min(100% - 32px, 1440px);
   }
 
@@ -867,6 +1147,56 @@ footer {
 
   .archive {
     padding: 42px 0 60px;
+  }
+
+  .games-showcase {
+    padding-bottom: 60px;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-home-card {
+    grid-template-columns: 1fr;
+  }
+
+  .game-home-art {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .game-home-copy {
+    padding: 22px 20px 20px;
+  }
+
+  .game-home-copy strong {
+    margin-top: 20px;
+  }
+
+  .games-page-intro {
+    padding: 42px 0 30px;
+  }
+
+  .games-page-intro h1 {
+    font-size: 43px;
+  }
+
+  .game-detail-card {
+    grid-template-columns: 1fr;
+  }
+
+  .game-detail-art {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .game-detail-copy {
+    padding: 28px 20px 22px;
+  }
+
+  .game-detail-copy h2 {
+    font-size: 38px;
   }
 
   .game-promo-float {
