@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { games } from "../games";
 
 export const metadata: Metadata = {
@@ -26,12 +25,12 @@ export default function GamesPage() {
   return (
     <main className="game-page">
       <header className="game-page-header">
-        <Link className="brand" href="/" aria-label="返回雷强博客首页">
+        <a className="brand" href="/" aria-label="返回雷强博客首页">
           雷强博客
-        </Link>
-        <Link className="game-back" href="/">
+        </a>
+        <a className="game-back" href="/">
           返回首页
-        </Link>
+        </a>
       </header>
 
       <section className="games-page-intro" aria-labelledby="games-page-title">

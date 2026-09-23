@@ -56,6 +56,7 @@ test("renders the three-game promotion landing page", async () => {
   assert.match(html, /在微信中搜索/);
   assert.match(html, /live-lure-code\.png/);
   assert.match(html, /full-grid-home-code\.jpg/);
+  assert.match(html, /<a class="game-back" href="\/">返回首页<\/a>/);
   assert.match(html, /rel="canonical" href="http:\/\/www\.lure\.red\/game\/"/);
 });
 
