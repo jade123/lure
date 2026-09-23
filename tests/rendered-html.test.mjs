@@ -36,6 +36,8 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /在抖音，继续看真实雷强实战/);
   assert.match(html, /@路亚码农/);
   assert.match(html, /douyin-luyamanong\.jpg/);
+  assert.match(html, /关注「全仁独立游戏屋」/);
+  assert.match(html, /mp\.weixin\.qq\.com\/mp\/profile_ext/);
   assert.doesNotMatch(html, /game-promo-wrap/);
   assert.doesNotMatch(html, /<video\b|\/media\/|\/assets\/videos\//);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);

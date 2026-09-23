@@ -304,6 +304,7 @@ button {
 .archive,
 .games-showcase,
 .douyin-follow,
+.wechat-follow,
 footer {
   width: min(1440px, calc(100% - 72px));
   margin-inline: auto;
@@ -1010,6 +1011,71 @@ footer {
   backdrop-filter: blur(8px);
 }
 
+.wechat-follow {
+  margin-bottom: 72px;
+  padding: 30px 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 30px;
+  align-items: center;
+  border: 1px solid #2d3933;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 88% 20%, rgba(7, 193, 96, 0.13), transparent 28%),
+    #111514;
+}
+
+.wechat-kicker {
+  margin: 0 0 8px;
+  color: #39d884;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.wechat-follow h2 {
+  margin: 0;
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -0.035em;
+}
+
+.wechat-follow > div > p:last-child {
+  margin: 12px 0 0;
+  color: #aeb4b1;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.wechat-follow-action {
+  display: grid;
+  justify-items: start;
+  gap: 9px;
+}
+
+.wechat-follow-action a {
+  min-height: 46px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 7px;
+  background: #07c160;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.wechat-follow-action a:hover {
+  transform: translateY(-2px);
+  background: #11cf6b;
+}
+
+.wechat-follow-action small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 footer {
   min-height: 116px;
   display: grid;
@@ -1137,6 +1203,7 @@ footer {
   .archive,
   .games-showcase,
   .douyin-follow,
+  .wechat-follow,
   footer,
   .game-page-header,
   .game-landing,
@@ -1332,6 +1399,18 @@ footer {
     width: min(100%, 330px);
     justify-self: center;
     transform: none;
+  }
+
+  .wechat-follow {
+    margin-bottom: 40px;
+    padding: 28px 24px;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .wechat-follow-action a {
+    width: 100%;
+    justify-content: center;
   }
 
   footer {

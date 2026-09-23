@@ -85,6 +85,7 @@ export default function Home() {
           </a>
           <a href="#games">小游戏</a>
           <a href="#douyin">关注抖音</a>
+          <a href="#wechat">公众号</a>
         </nav>
       </header>
 
@@ -219,6 +220,26 @@ export default function Home() {
           />
           <span>扫码关注 · 看更多实战片段</span>
         </a>
+      </section>
+
+      <section id="wechat" className="wechat-follow" aria-labelledby="wechat-title">
+        <div>
+          <p className="wechat-kicker">微信公众号</p>
+          <h2 id="wechat-title">关注「全仁独立游戏屋」</h2>
+          <p>
+            小游戏更新、关卡攻略和独立开发记录，都会在公众号里发布。
+          </p>
+        </div>
+        <div className="wechat-follow-action">
+          <a
+            href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI2NjcxNjkxMQ==&scene=124#wechat_redirect"
+            target="_blank"
+            rel="noreferrer"
+          >
+            微信内打开公众号
+          </a>
+          <small>进入公众号主页后，点击“关注公众号”</small>
+        </div>
       </section>
 
       <footer>
