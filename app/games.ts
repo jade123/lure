@@ -5,8 +5,8 @@ export type GameItem = {
   description: string;
   highlight: string;
   cover: string;
-  qrCode: string;
-  qrFormat: "square" | "wide";
+  qrCode?: string;
+  qrFormat?: "square" | "wide";
   appId: string;
   originalId: string;
   wechatPath: string;
@@ -38,6 +38,17 @@ export const games: GameItem[] = [
     qrFormat: "square",
     appId: "wx264cd3105c169e1c",
     originalId: "gh_524cfa8cf5a7",
+    wechatPath: "?source=lure_blog",
+  },
+  {
+    slug: "odd-picture",
+    name: "这张图不对劲",
+    label: "四合一休闲益智合集",
+    description: "找茬、推理、连连看与数字华容道，四种轻松益智玩法，随时来一局发现画面里的小秘密。",
+    highlight: "找茬 · 推理 · 连连看 · 华容道",
+    cover: "/odd-picture-cover.png",
+    appId: "wx8dfa5e599bc00d26",
+    originalId: "gh_59f6fb423334",
     wechatPath: "?source=lure_blog",
   },
 ];

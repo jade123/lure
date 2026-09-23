@@ -30,7 +30,9 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /我的微信小游戏/);
   assert.match(html, /实况路亚打黑/);
   assert.match(html, /满格收纳小屋/);
+  assert.match(html, /这张图不对劲/);
   assert.match(html, /live-lure-cover\.jpg/);
+  assert.match(html, /odd-picture-cover\.png/);
   assert.match(html, /在抖音，继续看真实雷强实战/);
   assert.match(html, /@路亚码农/);
   assert.match(html, /douyin-luyamanong\.jpg/);
@@ -39,15 +41,17 @@ test("renders the finished Chinese video site", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });
 
-test("renders the two-game promotion landing page", async () => {
+test("renders the three-game promotion landing page", async () => {
   const response = await render("/game");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /我做的微信小游戏/);
   assert.match(html, /实况路亚打黑/);
   assert.match(html, /满格收纳小屋/);
+  assert.match(html, /这张图不对劲/);
   assert.match(html, /第一视角雷强模拟/);
   assert.match(html, /微信扫码开始游戏/);
+  assert.match(html, /在微信中搜索/);
   assert.match(html, /live-lure-code\.png/);
   assert.match(html, /full-grid-home-code\.jpg/);
   assert.match(html, /rel="canonical" href="http:\/\/www\.lure\.red\/game\/"/);
@@ -74,6 +78,7 @@ test("ships video data without starter preview files", async () => {
   await access(new URL("../public/douyin-luyamanong.jpg", import.meta.url));
   await access(new URL("../public/live-lure-cover.jpg", import.meta.url));
   await access(new URL("../public/live-lure-code.png", import.meta.url));
+  await access(new URL("../public/odd-picture-cover.png", import.meta.url));
 });
 
 test("keeps the trial site and CDN on HTTP", async () => {

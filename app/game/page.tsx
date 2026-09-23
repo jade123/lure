@@ -4,7 +4,7 @@ import { games } from "../games";
 
 export const metadata: Metadata = {
   title: "我的微信小游戏｜雷强博客",
-  description: "实况路亚打黑与满格收纳小屋，两款免费微信小游戏。",
+  description: "实况路亚打黑、满格收纳小屋与这张图不对劲，三款免费微信小游戏。",
   alternates: { canonical: "/game/" },
   openGraph: {
     title: "我的微信小游戏｜雷强博客",
@@ -66,32 +66,43 @@ export default function GamesPage() {
                 </a>
               ) : null}
 
-              <a
-                className={`game-qr-card game-qr-${game.qrFormat}`}
-                href={game.qrCode}
-                aria-label={`查看${game.name}小程序码`}
-              >
-                <img
-                  src={game.qrCode}
-                  alt={`${game.name}微信小程序码`}
-                  width={game.qrFormat === "wide" ? "1086" : "258"}
-                  height={game.qrFormat === "wide" ? "400" : "258"}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>
-                  <b>微信扫码开始游戏</b>
-                  <small>电脑：打开微信扫一扫</small>
-                  <small>手机微信：点开后长按识别</small>
-                  <small>也可搜索“{game.name}”</small>
-                </span>
-              </a>
+              {game.qrCode ? (
+                <a
+                  className={`game-qr-card game-qr-${game.qrFormat}`}
+                  href={game.qrCode}
+                  aria-label={`查看${game.name}小程序码`}
+                >
+                  <img
+                    src={game.qrCode}
+                    alt={`${game.name}微信小程序码`}
+                    width={game.qrFormat === "wide" ? "1086" : "258"}
+                    height={game.qrFormat === "wide" ? "400" : "258"}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>
+                    <b>微信扫码开始游戏</b>
+                    <small>电脑：打开微信扫一扫</small>
+                    <small>手机微信：点开后长按识别</small>
+                    <small>也可搜索“{game.name}”</small>
+                  </span>
+                </a>
+              ) : (
+                <div className="game-search-card">
+                  <span aria-hidden="true">微信</span>
+                  <div>
+                    <b>在微信中搜索</b>
+                    <strong>{game.name}</strong>
+                    <small>打开微信，下拉进入小程序搜索即可游玩</small>
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         ))}
       </div>
 
-      <p className="games-page-note">两款游戏均已正式上线 · 无需下载安装</p>
+      <p className="games-page-note">三款游戏均已正式上线 · 无需下载安装</p>
     </main>
   );
 }

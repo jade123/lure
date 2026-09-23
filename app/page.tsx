@@ -175,7 +175,9 @@ export default function Home() {
                 <p>{game.label}</p>
                 <h3>{game.name}</h3>
                 <small>{game.highlight}</small>
-                <strong>微信扫码游玩 <i aria-hidden="true">→</i></strong>
+                <strong>
+                  {game.qrCode ? "微信扫码游玩" : "微信搜索游玩"} <i aria-hidden="true">→</i>
+                </strong>
               </div>
             </a>
           ))}
@@ -231,7 +233,7 @@ export default function Home() {
 
       {showGamePromo && (
         <aside className="game-promo-float" aria-label="小游戏推荐">
-          <a href="#games" aria-label="查看我的两款微信小游戏">
+          <a href="#games" aria-label="查看我的三款微信小游戏">
             <img
               src="/live-lure-cover.jpg"
               alt=""
@@ -242,8 +244,8 @@ export default function Home() {
             />
             <span>
               <small>我的微信小游戏</small>
-              <strong>2 款游戏，免费游玩</strong>
-              <em>实况打黑 · 收纳闯关 →</em>
+              <strong>3 款游戏，免费游玩</strong>
+              <em>打黑 · 收纳 · 找茬益智 →</em>
             </span>
           </a>
           <button type="button" onClick={dismissGamePromo} aria-label="关闭小游戏推荐">
