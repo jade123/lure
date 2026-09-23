@@ -33,6 +33,8 @@ test("renders the finished Chinese video site", async () => {
   assert.match(html, /这张图不对劲/);
   assert.match(html, /live-lure-cover\.jpg/);
   assert.match(html, /odd-picture-cover\.png/);
+  assert.match(html, /<a href="\/game\/">小游戏<\/a>/);
+  assert.match(html, /href="\/game\/" aria-label="查看我的三款微信小游戏"/);
   assert.match(html, /在抖音，继续看真实雷强实战/);
   assert.match(html, /@路亚码农/);
   assert.match(html, /douyin-luyamanong\.jpg/);

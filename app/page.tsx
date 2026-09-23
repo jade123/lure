@@ -83,7 +83,7 @@ export default function Home() {
           <a className="nav-active" href="#videos">
             全部视频
           </a>
-          <a href="#games">小游戏</a>
+          <a href="/game/">小游戏</a>
           <a href="#douyin">关注抖音</a>
           <a href="#wechat">公众号</a>
         </nav>
@@ -254,7 +254,7 @@ export default function Home() {
 
       {showGamePromo && (
         <aside className="game-promo-float" aria-label="小游戏推荐">
-          <a href="#games" aria-label="查看我的三款微信小游戏">
+          <a href="/game/" aria-label="查看我的三款微信小游戏">
             <img
               src="/live-lure-cover.jpg"
               alt=""
